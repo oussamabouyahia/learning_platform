@@ -1,8 +1,8 @@
 import { useState } from "react";
-import CourseCard from "./components/course/CourseCard";
+import CourseCard from "./features/course/components/CourseCard";
 import { initialCourses } from "./mockData";
 import type { Course } from "./types/course";
-import { TabsButton } from "./components/course/TabsButton";
+import { TabsButton } from "./features/course/components/TabsButton";
 
 // 1. Create Mock Data
 // This simulates what the Backend would send you
@@ -11,37 +11,18 @@ function App() {
   const [courses, setCourses] = useState<Course[]>(initialCourses);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [tabs, setTabs] = useState("All");
+
+  const baseSearch = (course: Course) => {
+    const title = course.title.toLowerCase();
+    const author = course.author.toLowerCase();
+    const term = searchTerm.toLowerCase().trim();
+    return title.includes(term) || author.includes(term);
+  };
   const filteredCourses = courses.filter((course) => {
-    if (tabs === "Active")
-      return (
-        course.progress > 0 &&
-        course.progress < 100 &&
-        (course.title
-          .toLocaleLowerCase()
-          .includes(searchTerm.toLocaleLowerCase()) ||
-          course.author
-            .toLocaleLowerCase()
-            .includes(searchTerm.toLocaleLowerCase()))
-      );
-    if (tabs === "Completed")
-      return (
-        course.progress === 100 &&
-        (course.title
-          .toLocaleLowerCase()
-          .includes(searchTerm.toLocaleLowerCase()) ||
-          course.author
-            .toLocaleLowerCase()
-            .includes(searchTerm.toLocaleLowerCase()))
-      );
-    if (tabs === "All")
-      return (
-        course.title
-          .toLocaleLowerCase()
-          .includes(searchTerm.toLocaleLowerCase()) ||
-        course.author
-          .toLocaleLowerCase()
-          .includes(searchTerm.toLocaleLowerCase())
-      );
+    if (tabs === "Active") return course.progress < 100 && baseSearch(course);
+    else if (tabs === "Completed")
+      return course.progress === 100 && baseSearch(course);
+    else return baseSearch(course);
   });
   // 2. Mock Interactions
   const handleToggleFavorite = (id: string) => {
@@ -76,13 +57,13 @@ function App() {
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="search a course"
             className="block  p-4 ps-10 text-sm text-gray-900 border border-gray-300
- rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+                       rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
           />
         </div>
         <TabsButton tabs={tabs} setTabs={setTabs} />
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course) => (
+          {filteredCourses.map((course) => (
             <CourseCard
               key={course.id}
               course={course}
