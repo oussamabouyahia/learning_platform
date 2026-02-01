@@ -14,3 +14,8 @@ export interface CourseCardProps {
   onToggleFavorite: (id: string) => void;
   onOpenCourse: (id: string) => void;
 }
+export interface TabsProps {
+  tabs: string;
+  setTabs: (val: string) => void;
+  label?: string;
+}

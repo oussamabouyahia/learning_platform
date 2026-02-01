@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { CourseCardProps } from "../../../types/course";
+import type { CourseCardProps } from "../types/course";
 
 const CourseCard: React.FC<CourseCardProps> = ({
   course,
