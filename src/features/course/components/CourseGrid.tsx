@@ -1,38 +1,19 @@
 import { useState } from "react";
 import CourseCard from "./CourseCard";
-import { initialCourses } from "../../../mockData";
-import type { Course } from "../types/course";
-import TabsButtons from "./TabsButton";
+import TabsButtons from "./TabsButtons";
 import { useSearch } from "../hooks/useSearch";
+import { useCourse } from "../hooks/useCourse";
 
 // 1. Create Mock Data
 // This simulates what the Backend would send you
 
-function Cards() {
-  const [courses, setCourses] = useState<Course[]>(initialCourses);
+function CouseGrid() {
+  const { handleToggleFavorite, handleOpenCourse, courses } = useCourse();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [tabs, setTabs] = useState("All");
-
   const { filteredCourses } = useSearch(courses, searchTerm, tabs);
   // 2. Mock Interactions
-  const handleToggleFavorite = (id: string) => {
-    setCourses((prev) =>
-      prev.map((course) =>
-        course.id === id
-          ? { ...course, isFavorite: !course.isFavorite }
-          : course,
-      ),
-    );
-    console.log(`Toggled favorite for course ${id}`);
-  };
 
-  const handleOpenCourse = (id: string) => {
-    alert(`Navigating to course ${id}...`);
-  };
-  // const handleTabClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-  //   setTabs(e.currentTarget.id);
-  //   console.log(e.currentTarget.id, tabs);
-  // };
   return (
     <div className="min-h-screen bg-gray-50 p-10 font-sans">
       <div className="max-w-6xl mx-auto">
@@ -67,4 +48,4 @@ function Cards() {
   );
 }
 
-export default Cards;
+export default CouseGrid;

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import type { Course } from "../types/course";
 
-export function useSearch(courses: any[], searchTerm: string, tabs: string) {
+export function useSearch(courses: Course[], searchTerm: string, tabs: string) {
   const matchSearchInput = (course: Course) => {
     const title = course.title.toLowerCase();
     const author = course.author.toLowerCase();

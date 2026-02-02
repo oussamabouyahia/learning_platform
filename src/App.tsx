@@ -1,7 +1,7 @@
 // 1. Create Mock Data
 // This simulates what the Backend would send you
 
-import Cards from "./features/course/components/Cards";
+import CouseGrid from "./features/course/components/CourseGrid";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <h1 className="text-3xl font-bold text-gray-900 mb-8">
           My Learning Path
         </h1>
-        <Cards />
+        <CouseGrid />
       </div>
     </div>
   );
