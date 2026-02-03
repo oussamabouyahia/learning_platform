@@ -8,12 +8,18 @@ import { useCourse } from "../hooks/useCourse";
 // This simulates what the Backend would send you
 
 function CouseGrid() {
-  const { handleToggleFavorite, handleOpenCourse, courses } = useCourse();
+  const { handleToggleFavorite, handleOpenCourse, courses, error, loading } =
+    useCourse();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [tabs, setTabs] = useState("All");
   const { filteredCourses } = useSearch(courses, searchTerm, tabs);
   // 2. Mock Interactions
-
+  if (loading) {
+    return <div>Loading courses...</div>;
+  }
+  if (error) {
+    return <div>Error loading courses: {error}</div>;
+  }
   return (
     <div className="min-h-screen bg-gray-50 p-10 font-sans">
       <div className="max-w-6xl mx-auto">
