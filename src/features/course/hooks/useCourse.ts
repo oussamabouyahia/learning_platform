@@ -1,54 +1,84 @@
-import { useEffect, useState } from "react";
-
-import type { Course } from "../types/course";
-import { useNavigate } from "react-router-dom";
+// src/features/course/hooks/useCourse.ts
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../../services/api";
-export function useCourse() {
-  const [courses, setCourses] = useState<Course[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    // Simulate fetching data
+import type { Course } from "../types/course";
 
-    api
-      .getAllCourses()
-      .then((data) => setCourses(data))
-      .catch((error) => setError(error.message))
-      .finally(() => setLoading(false));
-  }, []);
-  const navigate = useNavigate();
-  // ... imports
+// Keys for caching
+export const courseKeys = {
+  all: ["courses"] as const,
+  lists: () => [...courseKeys.all, "list"] as const,
+  detail: (id: string) => [...courseKeys.all, "detail", id] as const,
+};
 
-  const handleToggleFavorite = async (id: string) => {
-    const courseToUpdate = courses.find((c) => c.id === id);
-    if (!courseToUpdate) return;
-    const updatedCourse = {
-      ...courseToUpdate,
-      isFavorite: !courseToUpdate.isFavorite,
-    };
-    setCourses((prev) =>
-      prev.map((course) => (course.id === id ? updatedCourse : course)),
-    );
-    try {
-      await api.updateCourse(updatedCourse);
-    } catch (err) {
-      console.error("Failed to update favorite", err);
-      setCourses((prev) =>
-        prev.map(
-          (course) => (course.id === id ? courseToUpdate : course), // Revert to old state
-        ),
+export function useCourses() {
+  const queryClient = useQueryClient();
+
+  // 1. Fetching (The "Source of Truth")
+  const {
+    data: courses = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: courseKeys.lists(),
+    queryFn: api.getAllCourses,
+  });
+
+  // 2. Mutation (The "Updater")
+  const toggleFavoriteMutation = useMutation({
+    mutationFn: (course: Course) => api.updateCourse(course),
+
+    // Optimistic Update Logic
+    onMutate: async (updatedCourse) => {
+      // Cancel background refetches
+      await queryClient.cancelQueries({ queryKey: courseKeys.lists() });
+
+      // Snapshot the previous value
+      const previousCourses = queryClient.getQueryData<Course[]>(
+        courseKeys.lists(),
       );
+
+      // Optimistically update to the new value
+      if (previousCourses) {
+        queryClient.setQueryData<Course[]>(
+          courseKeys.lists(),
+          (old) =>
+            old?.map((c) => (c.id === updatedCourse.id ? updatedCourse : c)) ||
+            [],
+        );
+      }
+
+      return { previousCourses };
+    },
+
+    // If API fails, roll back
+    onError: (err, newTodo, context) => {
+      if (context?.previousCourses) {
+        queryClient.setQueryData(courseKeys.lists(), context.previousCourses);
+      }
+    },
+
+    // Always refetch after error or success
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: courseKeys.lists() });
+    },
+  });
+
+  // 3. The Handler
+  const handleToggleFavorite = (id: string) => {
+    const course = courses.find((c) => c.id === id);
+    if (course) {
+      // ⚡️ Triggers the mutation defined above
+      toggleFavoriteMutation.mutate({
+        ...course,
+        isFavorite: !course.isFavorite,
+      });
     }
   };
-  const handleOpenCourse = (id: string) => {
-    navigate(`/course/${id}`);
-  };
+
   return {
-    handleToggleFavorite,
-    handleOpenCourse,
     courses,
-    setCourses,
-    error,
-    loading,
+    isLoading,
+    error: error ? (error as Error).message : null,
+    handleToggleFavorite,
   };
 }
