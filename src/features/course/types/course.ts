@@ -1,3 +1,15 @@
+export interface Lesson {
+  id: string;
+  title: string;
+  duration: string;
+  isCompleted: boolean;
+}
+
+export interface Module {
+  title: string;
+  lessons: Lesson[];
+}
+
 export interface Course {
   id: string;
   title: string;
@@ -7,6 +19,7 @@ export interface Course {
   author: string;
   progress: number; // 0 to 100
   isFavorite: boolean;
+  modules?: Module[];
 }
 
 export interface CourseCardProps {

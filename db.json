@@ -7,7 +7,44 @@
       "duration": "4h 30m",
       "author": "Sarah Drasner",
       "progress": 65,
-      "isFavorite": true
+      "isFavorite": true,
+      "description": "Learn the latest patterns in React development, including hooks, context, and performance optimization techniques.",
+      "modules": [
+        {
+          "title": "Getting Started",
+          "lessons": [
+            {
+              "id": "l1",
+              "title": "Introduction to React 19",
+              "duration": "5:00",
+              "isCompleted": true
+            },
+            {
+              "id": "l2",
+              "title": "Setup Environment",
+              "duration": "10:30",
+              "isCompleted": true
+            }
+          ]
+        },
+        {
+          "title": "Advanced Hooks",
+          "lessons": [
+            {
+              "id": "l3",
+              "title": "useOptimistic Hook",
+              "duration": "15:00",
+              "isCompleted": false
+            },
+            {
+              "id": "l4",
+              "title": "Custom Hooks Patterns",
+              "duration": "20:00",
+              "isCompleted": false
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2",
@@ -16,7 +53,44 @@
       "duration": "2h 15m",
       "author": "Matt Pocock",
       "progress": 10,
-      "isFavorite": false
+      "isFavorite": false,
+      "description": "Master TypeScript generics to create flexible and reusable components and functions in your applications.",
+      "modules": [
+        {
+          "title": "Generics Basics",
+          "lessons": [
+            {
+              "id": "l5",
+              "title": "Understanding Generics",
+              "duration": "12:00",
+              "isCompleted": true
+            },
+            {
+              "id": "l6",
+              "title": "Generic Functions",
+              "duration": "18:00",
+              "isCompleted": false
+            }
+          ]
+        },
+        {
+          "title": "Advanced Generic Types",
+          "lessons": [
+            {
+              "id": "l7",
+              "title": "Conditional Types",
+              "duration": "22:00",
+              "isCompleted": false
+            },
+            {
+              "id": "l8",
+              "title": "Mapped Types",
+              "duration": "25:00",
+              "isCompleted": false
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "3",
@@ -25,7 +99,32 @@
       "duration": "1h 00m",
       "author": "Test User",
       "progress": 100,
-      "isFavorite": false
+      "isFavorite": false,
+      "description": "This course is designed to test the handling of broken image links in the application.",
+      "modules": [
+        {
+          "title": "Module 1",
+          "lessons": [
+            {
+              "id": "l9",
+              "title": "Lesson with Broken Image",
+              "duration": "10:00",
+              "isCompleted": true
+            }
+          ]
+        },
+        {
+          "title": "Module 2",
+          "lessons": [
+            {
+              "id": "l10",
+              "title": "Another Lesson",
+              "duration": "15:00",
+              "isCompleted": true
+            }
+          ]
+        }
+      ]
     }
   ]
 }

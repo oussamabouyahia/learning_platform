@@ -1,36 +1,26 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { initialCourses } from "../mockData"; // Import your mock data
+import { useParams } from "react-router-dom";
+import { useCourseDetail } from "../features/course/hooks/useCourseDetail";
+import { BackToDashboard } from "../shared/BackToDashboard";
+import { LoadingComponent } from "../shared/LoadingComponent";
 
 export const CourseDetailPage = () => {
   const { courseId } = useParams(); // 1. Read the URL param
-  const navigate = useNavigate();
 
-  // 2. Simulate fetching data (find the course in our mock array)
-  const course = initialCourses.find((c) => c.id === courseId);
-
-  if (!course) {
+  const { course, loading, error } = useCourseDetail(courseId); //fetching one course (the logic inside useCourseDetail hook)
+  if (loading) {
+    return <LoadingComponent label="Loading course details..." />;
+  }
+  if (error || !course) {
     return (
-      <div className="p-10 text-center">
-        <h2 className="text-xl font-bold text-red-500">Course not found!</h2>
-        <button
-          onClick={() => navigate("/")}
-          className="text-blue-500 underline mt-4"
-        >
-          Go Home
-        </button>
+      <div className="p-8 text-center text-red-500">
+        <p>Error: {error}</p>
+        <BackToDashboard />
       </div>
     );
   }
-
   return (
     <div className="max-w-4xl mx-auto p-8">
-      <button
-        onClick={() => navigate("/")}
-        className="mb-6 text-gray-500 hover:text-blue-600 font-medium flex items-center gap-2"
-      >
-        ← Back to Dashboard
-      </button>
-
+      <BackToDashboard />
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
         {/* Hero Section */}
         <div className="relative h-64 bg-gray-800">
@@ -46,7 +36,6 @@ export const CourseDetailPage = () => {
             <p className="text-gray-200 text-lg">by {course.author}</p>
           </div>
         </div>
-
         {/* Content Section */}
         <div className="p-8">
           <div className="flex items-center justify-between mb-8">
@@ -65,7 +54,6 @@ export const CourseDetailPage = () => {
               </div>
             </div>
           </div>
-
           <h3 className="text-xl font-bold mb-4">Course Content</h3>
           <p className="text-gray-600 leading-relaxed">
             This is where the video player and lesson list would go. Since this

@@ -3,6 +3,7 @@ import CourseCard from "./CourseCard";
 import TabsButtons from "./TabsButtons";
 import { useSearch } from "../hooks/useSearch";
 import { useCourse } from "../hooks/useCourse";
+import { LoadingComponent } from "../../../shared/LoadingComponent";
 
 // 1. Create Mock Data
 // This simulates what the Backend would send you
@@ -15,7 +16,7 @@ function CouseGrid() {
   const { filteredCourses } = useSearch(courses, searchTerm, tabs);
   // 2. Mock Interactions
   if (loading) {
-    return <div>Loading courses...</div>;
+    return <LoadingComponent label="Loading courses..." />;
   }
   if (error) {
     return <div>Error loading courses: {error}</div>;
