@@ -1,18 +1,16 @@
-// 1. Create Mock Data
-// This simulates what the Backend would send you
-
-import CouseGrid from "./features/course/components/CourseGrid";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { DashboardPage } from "./page/DashboardPage";
+import { CourseDetailPage } from "./page/CourseDetailPage";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50 p-10 font-sans">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">
-          My Learning Path
-        </h1>
-        <CouseGrid />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<DashboardPage />} />
+        {/* 🔗 The Magic Part: :courseId creates a dynamic variable */}
+        <Route path="/course/:courseId" element={<CourseDetailPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

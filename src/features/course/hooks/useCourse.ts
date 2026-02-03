@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { initialCourses } from "../../../mockData";
 import type { Course } from "../types/course";
+import { useNavigate } from "react-router-dom";
 
 export function useCourse() {
   // Placeholder for future course-related logic
   const [courses, setCourses] = useState<Course[]>(initialCourses);
+  const navigate = useNavigate();
   const handleToggleFavorite = (id: string) => {
     setCourses((prev) =>
       prev.map((course) =>
@@ -17,7 +19,7 @@ export function useCourse() {
   };
 
   const handleOpenCourse = (id: string) => {
-    alert(`Navigating to course ${id}...`);
+    navigate(`/course/${id}`);
   };
   return { handleToggleFavorite, handleOpenCourse, courses, setCourses };
 }
