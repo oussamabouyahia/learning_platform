@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   test: {
     // 🟢 ADD THIS LINE:
+    globals: true,
     environment: "jsdom",
 
     // Optional: Setup file for cleanups (we can add this later)

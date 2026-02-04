@@ -2,20 +2,20 @@ import { useState } from "react";
 import CourseCard from "./CourseCard";
 import TabsButtons from "./TabsButtons";
 import { useSearch } from "../hooks/useSearch";
-import { useCourse } from "../hooks/useCourse";
+import { useCourses } from "../hooks/useCourse";
 import { LoadingComponent } from "../../../shared/LoadingComponent";
 
 // 1. Create Mock Data
 // This simulates what the Backend would send you
 
-function CouseGrid() {
-  const { handleToggleFavorite, handleOpenCourse, courses, error, loading } =
-    useCourse();
+const CouseGrid = () => {
+  const { handleToggleFavorite, handleOpenCourse, courses, error, isLoading } =
+    useCourses();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [tabs, setTabs] = useState("All");
   const { filteredCourses } = useSearch(courses, searchTerm, tabs);
   // 2. Mock Interactions
-  if (loading) {
+  if (isLoading) {
     return <LoadingComponent label="Loading courses..." />;
   }
   if (error) {
@@ -40,6 +40,11 @@ function CouseGrid() {
         </div>
         <TabsButtons tabs={tabs} setTabs={setTabs} />
         {/* Grid Layout */}
+        {filteredCourses.length === 0 ? (
+          <div className="text-center text-gray-500 mt-20">
+            No courses found.
+          </div>
+        ) : null}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map((course) => (
             <CourseCard
@@ -53,6 +58,6 @@ function CouseGrid() {
       </div>
     </div>
   );
-}
+};
 
 export default CouseGrid;

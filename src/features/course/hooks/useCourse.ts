@@ -2,6 +2,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../../services/api";
 import type { Course } from "../types/course";
+import { useNavigate } from "react-router-dom";
 
 // Keys for caching
 export const courseKeys = {
@@ -12,7 +13,7 @@ export const courseKeys = {
 
 export function useCourses() {
   const queryClient = useQueryClient();
-
+  const navigate = useNavigate();
   // 1. Fetching (The "Source of Truth")
   const {
     data: courses = [],
@@ -74,11 +75,17 @@ export function useCourses() {
       });
     }
   };
+  const handleOpenCourse = (id: string) => {
+    // This would navigate to the course detail page in a real app
+    alert(`Navigate to course with ID: ${id}`);
+    navigate(`/courses/${id}`);
+  };
 
   return {
     courses,
     isLoading,
     error: error ? (error as Error).message : null,
     handleToggleFavorite,
+    handleOpenCourse,
   };
 }
