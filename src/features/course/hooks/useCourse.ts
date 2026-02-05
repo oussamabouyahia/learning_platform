@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../../services/api";
 import type { Course } from "../types/course";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 // Keys for caching
 export const courseKeys = {
@@ -50,12 +51,18 @@ export function useCourses() {
 
       return { previousCourses };
     },
+    onSuccess: (_, variables) => {
+      // 'variables' contains the data you sent to the mutation (the course object)
+      const status = variables.isFavorite ? "Added to" : "Removed from";
+      toast.success(`${status} Favorites`);
+    },
 
     // If API fails, roll back
     onError: (err, newTodo, context) => {
       if (context?.previousCourses) {
         queryClient.setQueryData(courseKeys.lists(), context.previousCourses);
       }
+      toast.error("Failed to update favorite");
     },
 
     // Always refetch after error or success

@@ -3,7 +3,8 @@ import CourseCard from "./CourseCard";
 import TabsButtons from "./TabsButtons";
 import { useSearch } from "../hooks/useSearch";
 import { useCourses } from "../hooks/useCourse";
-import { LoadingComponent } from "../../../shared/LoadingComponent";
+
+import { CourseCardSkeleton } from "./CourseCardSkeleton";
 
 // 1. Create Mock Data
 // This simulates what the Backend would send you
@@ -16,7 +17,13 @@ const CouseGrid = () => {
   const { filteredCourses } = useSearch(courses, searchTerm, tabs);
   // 2. Mock Interactions
   if (isLoading) {
-    return <LoadingComponent label="Loading courses..." />;
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[...Array(6)].map((_, i) => (
+          <CourseCardSkeleton key={i} />
+        ))}
+      </div>
+    );
   }
   if (error) {
     return <div>Error loading courses: {error}</div>;
