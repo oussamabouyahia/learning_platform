@@ -1,13 +1,22 @@
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { DashboardPage } from "./page/DashboardPage";
-import { CourseDetailPage } from "./page/CourseDetailPage";
+
+const CourseDetailPage = lazy(() =>
+  import("./page/CourseDetailPage").then((module) => ({
+    default: module.CourseDetailPage,
+  })),
+);
 
 function App() {
   return (
     <BrowserRouter>
+      <Suspense
+        fallback={<div className="p-10">Loading Application...</div>}
+      ></Suspense>
       <Routes>
         <Route path="/" element={<DashboardPage />} />
-        {/* 🔗 The Magic Part: :courseId creates a dynamic variable */}
+
         <Route path="/course/:courseId" element={<CourseDetailPage />} />
       </Routes>
     </BrowserRouter>

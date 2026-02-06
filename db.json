@@ -53,7 +53,7 @@
       "duration": "2h 15m",
       "author": "Matt Pocock",
       "progress": 10,
-      "isFavorite": true,
+      "isFavorite": false,
       "description": "Master TypeScript generics to create flexible and reusable components and functions in your applications.",
       "modules": [
         {
@@ -99,7 +99,7 @@
       "duration": "1h 00m",
       "author": "Test User",
       "progress": 100,
-      "isFavorite": true,
+      "isFavorite": false,
       "description": "This course is designed to test the handling of broken image links in the application.",
       "modules": [
         {
@@ -125,6 +125,39 @@
           ]
         }
       ]
+    },
+    {
+      "id": "4",
+      "title": "Modern Optimization Techniques",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
+      "duration": "1h 00m",
+      "author": "Oussama Bouyahia",
+      "progress": 0,
+      "isFavorite": false,
+      "description": "work on optimization techniques to improve the performance of your applications, including code splitting, lazy loading, and memoization.",
+      "modules": []
+    },
+    {
+      "id": "5",
+      "title": "TypeScript for Beginners",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1517433456452-f9633a875f6f",
+      "duration": "3h 00m",
+      "author": "Jane Doe",
+      "progress": 0,
+      "isFavorite": false,
+      "description": "Learn the basics of TypeScript, including types, interfaces, and how to integrate it into your JavaScript projects.",
+      "modules": []
+    },
+    {
+      "id": "6",
+      "title": "React State Management",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+      "duration": "2h 45m",
+      "author": "John Smith",
+      "progress": 0,
+      "isFavorite": true,
+      "description": "Explore various state management solutions for React applications, including Redux, MobX, and the Context API.",
+      "modules": []
     }
   ]
 }

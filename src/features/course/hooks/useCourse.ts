@@ -39,7 +39,7 @@ export function useCourses() {
         courseKeys.lists(),
       );
 
-      // Optimistically update to the new value
+      // Optimistically update
       if (previousCourses) {
         queryClient.setQueryData<Course[]>(
           courseKeys.lists(),
@@ -52,13 +52,14 @@ export function useCourses() {
       return { previousCourses };
     },
     onSuccess: (_, variables) => {
-      // 'variables' contains the data you sent to the mutation (the course object)
+      // 'variables' contains the data of the mutation (the course object)
       const status = variables.isFavorite ? "Added to" : "Removed from";
       toast.success(`${status} Favorites`);
     },
 
     // If API fails, roll back
     onError: (err, newTodo, context) => {
+      console.error("Error updating favorite:", err, newTodo);
       if (context?.previousCourses) {
         queryClient.setQueryData(courseKeys.lists(), context.previousCourses);
       }
@@ -83,9 +84,8 @@ export function useCourses() {
     }
   };
   const handleOpenCourse = (id: string) => {
-    // This would navigate to the course detail page in a real app
+    navigate(`/course/${id}`);
     alert(`Navigate to course with ID: ${id}`);
-    navigate(`/courses/${id}`);
   };
 
   return {
