@@ -5,6 +5,7 @@ import { useSearch } from "../hooks/useSearch";
 import { useCourses } from "../hooks/useCourse";
 
 import { CourseCardSkeleton } from "./CourseCardSkeleton";
+import { useDebounce } from "use-debounce";
 
 // 1. Create Mock Data
 // This simulates what the Backend would send you
@@ -13,8 +14,9 @@ const CouseGrid = () => {
   const { handleToggleFavorite, handleOpenCourse, courses, error, isLoading } =
     useCourses();
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [debouceTerm] = useDebounce(searchTerm, 500);
   const [tabs, setTabs] = useState("All");
-  const { filteredCourses } = useSearch(courses, searchTerm, tabs);
+  const { filteredCourses } = useSearch(courses, debouceTerm, tabs);
   // 2. Mock Interactions
   if (isLoading) {
     return (
@@ -37,6 +39,7 @@ const CouseGrid = () => {
         <div className="mb-8 relative w-600">
           <input
             type="search"
+            aria-label="Search courses"
             id="default-search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}

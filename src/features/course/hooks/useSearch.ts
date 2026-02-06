@@ -5,6 +5,7 @@ export function useSearch(courses: Course[], searchTerm: string, tabs: string) {
   const matchSearchInput = (course: Course) => {
     const title = course.title.toLowerCase();
     const author = course.author.toLowerCase();
+
     const term = searchTerm.toLowerCase().trim();
     return title.includes(term) || author.includes(term);
   };
