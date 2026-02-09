@@ -38,8 +38,11 @@ export interface CourseGridProps {
   courses: any[];
   handleOpenCourse: (course: any) => void;
   handleToggleFavorite: (course: any) => void;
+  headerSlot?: React.ReactNode;
+}
+export interface SearchProps {
   searchTerm: string;
-  setSearchTerm: (term: string) => void;
+  setSearchTerm: (val: string) => void;
   tabs: string;
-  setTabs: (tab: string) => void;
+  setTabs: (val: string) => void;
 }

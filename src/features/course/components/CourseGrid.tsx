@@ -1,5 +1,5 @@
 import CourseCard from "./CourseCard";
-import TabsButtons from "./TabsButtons";
+
 import { CourseCardSkeleton } from "./CourseCardSkeleton";
 import type { CourseGridProps } from "../types/course";
 
@@ -9,12 +9,8 @@ const CourseGrid = ({
   courses,
   handleOpenCourse,
   handleToggleFavorite,
-  searchTerm,
-  setSearchTerm,
-  tabs,
-  setTabs,
+  headerSlot,
 }: CourseGridProps) => {
-  // 2. Mock Interactions
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -33,19 +29,7 @@ const CourseGrid = ({
         <h1 className="text-3xl font-bold text-gray-900 mb-8">
           My Learning Path
         </h1>
-        <div className="mb-8 relative w-600">
-          <input
-            type="search"
-            aria-label="Search courses"
-            id="default-search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="search a course"
-            className="block  p-4 ps-10 text-sm text-gray-900 border border-gray-300
-                       rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-          />
-        </div>
-        <TabsButtons tabs={tabs} setTabs={setTabs} />
+        {headerSlot}
         {/* Grid Layout */}
         {courses.length === 0 ? (
           <div className="text-center text-gray-500 mt-20">
