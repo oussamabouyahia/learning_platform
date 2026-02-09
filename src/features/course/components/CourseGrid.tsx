@@ -1,22 +1,19 @@
-import { useState } from "react";
 import CourseCard from "./CourseCard";
 import TabsButtons from "./TabsButtons";
-import { useSearch } from "../hooks/useSearch";
-import { useCourses } from "../hooks/useCourse";
-
 import { CourseCardSkeleton } from "./CourseCardSkeleton";
-import { useDebounce } from "use-debounce";
+import type { CourseGridProps } from "../types/course";
 
-// 1. Create Mock Data
-// This simulates what the Backend would send you
-
-const CouseGrid = () => {
-  const { handleToggleFavorite, handleOpenCourse, courses, error, isLoading } =
-    useCourses();
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [debouceTerm] = useDebounce(searchTerm, 500);
-  const [tabs, setTabs] = useState("All");
-  const { filteredCourses } = useSearch(courses, debouceTerm, tabs);
+const CourseGrid = ({
+  isLoading,
+  error,
+  courses,
+  handleOpenCourse,
+  handleToggleFavorite,
+  searchTerm,
+  setSearchTerm,
+  tabs,
+  setTabs,
+}: CourseGridProps) => {
   // 2. Mock Interactions
   if (isLoading) {
     return (
@@ -50,13 +47,13 @@ const CouseGrid = () => {
         </div>
         <TabsButtons tabs={tabs} setTabs={setTabs} />
         {/* Grid Layout */}
-        {filteredCourses.length === 0 ? (
+        {courses.length === 0 ? (
           <div className="text-center text-gray-500 mt-20">
             No courses found.
           </div>
         ) : null}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCourses.map((course) => (
+          {courses.map((course) => (
             <CourseCard
               key={course.id}
               course={course}
@@ -70,4 +67,4 @@ const CouseGrid = () => {
   );
 };
 
-export default CouseGrid;
+export default CourseGrid;

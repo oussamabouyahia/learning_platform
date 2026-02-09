@@ -32,3 +32,14 @@ export interface TabsProps {
   setTabs: (val: string) => void;
   label?: string;
 }
+export interface CourseGridProps {
+  isLoading: boolean;
+  error: string | null;
+  courses: any[];
+  handleOpenCourse: (course: any) => void;
+  handleToggleFavorite: (course: any) => void;
+  searchTerm: string;
+  setSearchTerm: (term: string) => void;
+  tabs: string;
+  setTabs: (tab: string) => void;
+}
