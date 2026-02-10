@@ -1,7 +1,7 @@
 import CourseCard from "./CourseCard";
 
-import { CourseCardSkeleton } from "./CourseCardSkeleton";
 import type { CourseGridProps } from "../types/course";
+import LoadingSkeleton from "../../../shared/LoadingSkeleton";
 
 const CourseGrid = ({
   isLoading,
@@ -12,13 +12,7 @@ const CourseGrid = ({
   headerSlot,
 }: CourseGridProps) => {
   if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[...Array(6)].map((_, i) => (
-          <CourseCardSkeleton key={i} />
-        ))}
-      </div>
-    );
+    return <LoadingSkeleton />;
   }
   if (error) {
     return <div>Error loading courses: {error}</div>;

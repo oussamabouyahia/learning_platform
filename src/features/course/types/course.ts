@@ -34,7 +34,7 @@ export interface TabsProps {
 }
 export interface CourseGridProps {
   isLoading: boolean;
-  error: string | null;
+  error: string;
   courses: any[];
   handleOpenCourse: (course: any) => void;
   handleToggleFavorite: (course: any) => void;
