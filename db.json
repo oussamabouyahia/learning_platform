@@ -12,22 +12,22 @@
         {
           "id": "m1",
           "title": "Introduction",
-          "completed": true
+          "completed": false
         },
         {
           "id": "m2",
           "title": "JSX & Props",
-          "completed": true
+          "completed": false
         },
         {
           "id": "m3",
           "title": "State & Hooks",
-          "completed": true
+          "completed": false
         },
         {
           "id": "m4",
           "title": "Context API",
-          "completed": true
+          "completed": false
         },
         {
           "id": "m5",
@@ -35,7 +35,7 @@
           "completed": false
         }
       ],
-      "progress": 80
+      "progress": 0
     },
     {
       "id": "2",
@@ -54,20 +54,20 @@
         {
           "id": "m2",
           "title": "TypeScript for Beginners",
-          "completed": false
+          "completed": true
         },
         {
           "id": "m3",
           "title": "Advanced Generics",
-          "completed": false
+          "completed": true
         },
         {
           "id": "m4",
           "title": "Real-world Examples",
-          "completed": false
+          "completed": true
         }
       ],
-      "progress": 25
+      "progress": "100.00"
     },
     {
       "id": "3",
@@ -86,7 +86,7 @@
         {
           "id": "m2",
           "title": " images Fundamentals",
-          "completed": false
+          "completed": true
         },
         {
           "id": "m3",
@@ -94,7 +94,7 @@
           "completed": false
         }
       ],
-      "progress": 33.33333333333333
+      "progress": "66.67"
     },
     {
       "id": "4",
@@ -140,7 +140,7 @@
         {
           "id": "m1",
           "title": "Introduction",
-          "completed": false
+          "completed": true
         },
         {
           "id": "m2",
@@ -153,7 +153,7 @@
           "completed": false
         }
       ],
-      "progress": 0
+      "progress": "33.33"
     },
     {
       "id": "6",

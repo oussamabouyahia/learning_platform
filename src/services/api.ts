@@ -41,11 +41,11 @@ export const api = {
       );
     }
     targetModule.completed = true;
-
-    course.progress =
-      (course.modules.filter((mod) => mod.completed).length /
-        course.modules.length) *
-      100;
+    const completedCount = course.modules.filter((mod) => mod.completed).length;
+    const totalModules = course.modules.length;
+    course.progress = ((completedCount / totalModules) * 100).toFixed(
+      2,
+    ) as unknown as number;
     return api.updateCourse(course);
   },
 };
