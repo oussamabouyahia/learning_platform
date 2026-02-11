@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { api } from "../../../services/api"; // Adjust path
 import type { Course } from "../types/course";
+import { toast } from "sonner";
 
 export function useCourseDetail(courseId: string | undefined) {
   const [course, setCourse] = useState<Course | null>(null);
@@ -23,6 +24,10 @@ export function useCourseDetail(courseId: string | undefined) {
       })
       .finally(() => setLoading(false));
   }, [courseId]);
+  const handleProgress = async (moduleId: string) => {
+    await api.completeModule(courseId, moduleId);
+    toast.success("Module marked as completed");
+  };
 
-  return { course, loading, error };
+  return { course, loading, error, handleProgress };
 }

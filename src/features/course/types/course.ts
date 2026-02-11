@@ -6,8 +6,9 @@ export interface Lesson {
 }
 
 export interface Module {
+  id: string;
   title: string;
-  lessons: Lesson[];
+  completed: boolean;
 }
 
 export interface Course {
@@ -19,7 +20,7 @@ export interface Course {
   author: string;
   progress: number; // 0 to 100
   isFavorite: boolean;
-  modules?: Module[];
+  modules: Module[];
 }
 
 export interface CourseCardProps {

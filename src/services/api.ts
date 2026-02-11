@@ -29,4 +29,23 @@ export const api = {
     }
     return response.json();
   },
+  completeModule: async (
+    courseId: string | undefined,
+    moduleId: string,
+  ): Promise<Course> => {
+    const course = await api.getCourseById(courseId!);
+    const targetModule = course.modules.find((mod) => mod.id === moduleId);
+    if (!targetModule) {
+      throw new Error(
+        `Module with id: ${moduleId} not found in course ${courseId}`,
+      );
+    }
+    targetModule.completed = true;
+
+    course.progress =
+      (course.modules.filter((mod) => mod.completed).length /
+        course.modules.length) *
+      100;
+    return api.updateCourse(course);
+  },
 };

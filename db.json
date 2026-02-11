@@ -6,45 +6,36 @@
       "thumbnailUrl": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&q=80",
       "duration": "4h 30m",
       "author": "Sarah Drasner",
-      "progress": 65,
       "isFavorite": true,
       "description": "Learn the latest patterns in React development, including hooks, context, and performance optimization techniques.",
       "modules": [
         {
-          "title": "Getting Started",
-          "lessons": [
-            {
-              "id": "l1",
-              "title": "Introduction to React 19",
-              "duration": "5:00",
-              "isCompleted": true
-            },
-            {
-              "id": "l2",
-              "title": "Setup Environment",
-              "duration": "10:30",
-              "isCompleted": true
-            }
-          ]
+          "id": "m1",
+          "title": "Introduction",
+          "completed": true
         },
         {
-          "title": "Advanced Hooks",
-          "lessons": [
-            {
-              "id": "l3",
-              "title": "useOptimistic Hook",
-              "duration": "15:00",
-              "isCompleted": false
-            },
-            {
-              "id": "l4",
-              "title": "Custom Hooks Patterns",
-              "duration": "20:00",
-              "isCompleted": false
-            }
-          ]
+          "id": "m2",
+          "title": "JSX & Props",
+          "completed": true
+        },
+        {
+          "id": "m3",
+          "title": "State & Hooks",
+          "completed": true
+        },
+        {
+          "id": "m4",
+          "title": "Context API",
+          "completed": true
+        },
+        {
+          "id": "m5",
+          "title": "Performance Optimization",
+          "completed": false
         }
-      ]
+      ],
+      "progress": 80
     },
     {
       "id": "2",
@@ -52,45 +43,31 @@
       "thumbnailUrl": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=600&q=80",
       "duration": "2h 15m",
       "author": "Matt Pocock",
-      "progress": 10,
-      "isFavorite": false,
+      "isFavorite": true,
       "description": "Master TypeScript generics to create flexible and reusable components and functions in your applications.",
       "modules": [
         {
-          "title": "Generics Basics",
-          "lessons": [
-            {
-              "id": "l5",
-              "title": "Understanding Generics",
-              "duration": "12:00",
-              "isCompleted": true
-            },
-            {
-              "id": "l6",
-              "title": "Generic Functions",
-              "duration": "18:00",
-              "isCompleted": false
-            }
-          ]
+          "id": "m1",
+          "title": "Introduction",
+          "completed": true
         },
         {
-          "title": "Advanced Generic Types",
-          "lessons": [
-            {
-              "id": "l7",
-              "title": "Conditional Types",
-              "duration": "22:00",
-              "isCompleted": false
-            },
-            {
-              "id": "l8",
-              "title": "Mapped Types",
-              "duration": "25:00",
-              "isCompleted": false
-            }
-          ]
+          "id": "m2",
+          "title": "TypeScript for Beginners",
+          "completed": false
+        },
+        {
+          "id": "m3",
+          "title": "Advanced Generics",
+          "completed": false
+        },
+        {
+          "id": "m4",
+          "title": "Real-world Examples",
+          "completed": false
         }
-      ]
+      ],
+      "progress": 25
     },
     {
       "id": "3",
@@ -98,33 +75,26 @@
       "thumbnailUrl": "https://broken-link.com/image.jpg?w=600&q=80",
       "duration": "1h 00m",
       "author": "Test User",
-      "progress": 100,
-      "isFavorite": false,
+      "isFavorite": true,
       "description": "This course is designed to test the handling of broken image links in the application.",
       "modules": [
         {
-          "title": "Module 1",
-          "lessons": [
-            {
-              "id": "l9",
-              "title": "Lesson with Broken Image",
-              "duration": "10:00",
-              "isCompleted": true
-            }
-          ]
+          "id": "m1",
+          "title": "Introduction",
+          "completed": true
         },
         {
-          "title": "Module 2",
-          "lessons": [
-            {
-              "id": "l10",
-              "title": "Another Lesson",
-              "duration": "15:00",
-              "isCompleted": true
-            }
-          ]
+          "id": "m2",
+          "title": " images Fundamentals",
+          "completed": false
+        },
+        {
+          "id": "m3",
+          "title": "Image optimization",
+          "completed": false
         }
-      ]
+      ],
+      "progress": 33.33333333333333
     },
     {
       "id": "4",
@@ -132,10 +102,31 @@
       "thumbnailUrl": "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=600&q=80",
       "duration": "1h 00m",
       "author": "Oussama Bouyahia",
-      "progress": 0,
-      "isFavorite": false,
+      "isFavorite": true,
       "description": "work on optimization techniques to improve the performance of your applications, including code splitting, lazy loading, and memoization.",
-      "modules": []
+      "modules": [
+        {
+          "id": "m1",
+          "title": "Introduction",
+          "completed": false
+        },
+        {
+          "id": "m2",
+          "title": "Code Splitting",
+          "completed": false
+        },
+        {
+          "id": "m3",
+          "title": "Lazy Loading",
+          "completed": false
+        },
+        {
+          "id": "m4",
+          "title": "Memoization",
+          "completed": false
+        }
+      ],
+      "progress": 0
     },
     {
       "id": "5",
@@ -143,10 +134,26 @@
       "thumbnailUrl": "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?w=600&q=80",
       "duration": "3h 00m",
       "author": "Jane Doe",
-      "progress": 0,
-      "isFavorite": false,
+      "isFavorite": true,
       "description": "Learn the basics of TypeScript, including types, interfaces, and how to integrate it into your JavaScript projects.",
-      "modules": []
+      "modules": [
+        {
+          "id": "m1",
+          "title": "Introduction",
+          "completed": false
+        },
+        {
+          "id": "m2",
+          "title": "Benefits of TypeScript",
+          "completed": false
+        },
+        {
+          "id": "m3",
+          "title": "TypeScript with React",
+          "completed": false
+        }
+      ],
+      "progress": 0
     },
     {
       "id": "6",
@@ -154,10 +161,31 @@
       "thumbnailUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
       "duration": "2h 45m",
       "author": "John Smith",
-      "progress": 0,
       "isFavorite": true,
       "description": "Explore various state management solutions for React applications, including Redux, MobX, and the Context API.",
-      "modules": []
+      "modules": [
+        {
+          "id": "m1",
+          "title": "Introduction",
+          "completed": false
+        },
+        {
+          "id": "m2",
+          "title": "Redux Basics",
+          "completed": false
+        },
+        {
+          "id": "m3",
+          "title": "MobX Overview",
+          "completed": false
+        },
+        {
+          "id": "m4",
+          "title": "react query",
+          "completed": false
+        }
+      ],
+      "progress": 0
     }
   ]
 }

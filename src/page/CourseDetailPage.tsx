@@ -6,7 +6,8 @@ import { LoadingComponent } from "../shared/LoadingComponent";
 export const CourseDetailPage = () => {
   const { courseId } = useParams(); // 1. Read the URL param
 
-  const { course, loading, error } = useCourseDetail(courseId); //fetching one course (the logic inside useCourseDetail hook)
+  const { course, loading, error, handleProgress } = useCourseDetail(courseId); //fetching one course (the logic inside useCourseDetail hook)
+
   if (loading) {
     return <LoadingComponent label="Loading course details..." />;
   }
@@ -59,6 +60,29 @@ export const CourseDetailPage = () => {
             This is where the video player and lesson list would go. Since this
             is a mock, imagine a high-quality video player right here! 🎥
           </p>
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold m-4">Course modules</h2>
+          <ul className="space-y-2 px-4 mb-8">
+            {course.modules.map((module) => (
+              <li
+                key={module.id}
+                className="flex items-center m-1-2 p-4 bg-gray-50 rounded-lg shadow-sm gap-4"
+              >
+                <span className="mr-2 ml-2 text-lg">
+                  {module.completed ? "✅" : "⏳"}
+                </span>
+                <span>{module.title}</span>
+
+                <button
+                  className="ml-6 text-blue-500 hover:text-blue-700"
+                  onClick={() => handleProgress(module.id)}
+                >
+                  complete this module
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
