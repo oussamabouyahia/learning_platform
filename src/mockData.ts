@@ -10,6 +10,10 @@ export const initialCourses: Course[] = [
     author: "Sarah Drasner",
     progress: 65,
     isFavorite: true,
+    modules: [
+      { id: "m1", title: "Introduction to React Patterns", completed: true },
+      { id: "m2", title: "State Management with Hooks", completed: true },
+    ],
   },
   {
     id: "2",
@@ -20,6 +24,10 @@ export const initialCourses: Course[] = [
     author: "Matt Pocock",
     progress: 10,
     isFavorite: false,
+    modules: [
+      { id: "m1", title: "Introduction to React Patterns", completed: true },
+      { id: "m2", title: "State Management with Hooks", completed: true },
+    ],
   },
   {
     id: "3",
@@ -29,5 +37,9 @@ export const initialCourses: Course[] = [
     author: "Test User",
     progress: 100,
     isFavorite: false,
+    modules: [
+      { id: "m1", title: "Introduction to React Patterns", completed: true },
+      { id: "m2", title: "State Management with Hooks", completed: true },
+    ],
   },
 ];

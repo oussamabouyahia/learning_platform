@@ -66,6 +66,10 @@ const CourseCard: React.FC<CourseCardProps> = ({
         </span>
 
         <button
+          role="button"
+          aria-label={
+            course.isFavorite ? "Remove from favorites" : "Add to favorites"
+          }
           onClick={(e) => {
             e.stopPropagation();
             onToggleFavorite(course.id);

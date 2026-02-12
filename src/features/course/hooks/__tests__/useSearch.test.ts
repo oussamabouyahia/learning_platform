@@ -12,6 +12,10 @@ const mockCourses: Course[] = [
     duration: "1h",
     thumbnailUrl: "",
     isFavorite: false,
+    modules: [
+      { id: "m1", title: "Introduction to React", completed: true },
+      { id: "m2", title: "React Components", completed: false },
+    ],
   },
   {
     id: "2",
@@ -21,6 +25,10 @@ const mockCourses: Course[] = [
     duration: "2h",
     thumbnailUrl: "",
     isFavorite: false,
+    modules: [
+      { id: "m1", title: "Vue Directives", completed: true },
+      { id: "m2", title: "Vuex State Management", completed: true },
+    ],
   },
 ];
 

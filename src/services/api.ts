@@ -43,9 +43,9 @@ export const api = {
     targetModule.completed = true;
     const completedCount = course.modules.filter((mod) => mod.completed).length;
     const totalModules = course.modules.length;
-    course.progress = ((completedCount / totalModules) * 100).toFixed(
-      2,
-    ) as unknown as number;
+    course.progress = Number(
+      ((completedCount / totalModules) * 100).toFixed(2),
+    );
     return api.updateCourse(course);
   },
 };

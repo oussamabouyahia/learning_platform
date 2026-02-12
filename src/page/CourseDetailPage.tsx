@@ -75,6 +75,7 @@ export const CourseDetailPage = () => {
                 <span>{module.title}</span>
 
                 <button
+                  role="button"
                   className="ml-6 text-blue-500 hover:text-blue-700 bg-blue-100 px-3 py-1 rounded-full text-sm font-medium"
                   onClick={() => handleProgress(module.id)}
                 >

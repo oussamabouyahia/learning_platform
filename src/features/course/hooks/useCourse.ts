@@ -85,7 +85,6 @@ export function useCourses() {
   };
   const handleOpenCourse = (id: string) => {
     navigate(`/course/${id}`);
-    alert(`Navigate to course with ID: ${id}`);
   };
 
   return {

@@ -15,7 +15,7 @@ export const DashboardPage = () => {
   const [tabs, setTabs] = useState("All");
   const { filteredCourses } = useSearch(courses, debouceTerm, tabs);
   return (
-    <div className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50">
       {/* You can add a global Navigation Bar here later */}
       <CourseGrid
         headerSlot={
@@ -30,8 +30,8 @@ export const DashboardPage = () => {
         handleOpenCourse={handleOpenCourse}
         handleToggleFavorite={handleToggleFavorite}
         isLoading={isLoading}
-        error={error}
+        error={error || ""}
       />
-    </div>
+    </main>
   );
 };
