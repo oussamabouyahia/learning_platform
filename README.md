@@ -1,6 +1,6 @@
 # My Learning Path 🎓
 
-![Performance](https://img.shields.io/badge/Performance-98%25-brightgreen) ![Accessibility](https://img.shields.io/badge/Accessibility-91%25-brightgreen) ![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen)
+![Performance](https://img.shields.io/badge/Performance-98%25-brightgreen) ![Accessibility](https://img.shields.io/badge/Accessibility-91%25-brightgreen) ![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen) ![Build Status](https://github.com/oussamabouyahia/learning_platform/actions/workflows/ci.yml/badge.svg)
 
 A high-performance React Dashboard for tracking learning progress, featuring optimistic UI updates, rigorous testing, and architectural best practices.
 
